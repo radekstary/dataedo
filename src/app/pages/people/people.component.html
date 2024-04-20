@@ -1,0 +1,35 @@
+<ng-container *ngIf="person$ | async; else loaderTemplate">
+  <ng-container *ngIf="!hasError; else errorTemplate">
+    <img
+      [src]="src"
+      [alt]="alt"
+      [width]="width"
+      [height]="height"
+      class="photo"
+    />
+    <p class="text-muted">Hi, My name is</p>
+    <h1>{{ name }}</h1>
+    <dx-button
+      text="New"
+      type="default"
+      stylingMode="contained"
+      (click)="getNewPerson()"
+    ></dx-button>
+  </ng-container>
+</ng-container>
+
+<ng-template #loaderTemplate>
+  <dx-load-indicator
+    height="120"
+    width="120"
+    [visible]="!hasError"
+  ></dx-load-indicator>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <dx-button
+    text="Retry"
+    type="danger"
+    stylingMode="contained"
+  ></dx-button>
+</ng-template>
