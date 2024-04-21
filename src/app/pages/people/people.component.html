@@ -8,11 +8,13 @@
       class="photo"
       (mouseenter)="pauseAutoReload()"
       (mouseleave)="resumeAutoReload()"
+      data-cy="people-img"
     />
     <p class="text-muted">Hi, My name is</p>
     <h1
       (mouseenter)="pauseAutoReload()"
       (mouseleave)="resumeAutoReload()"
+      data-cy="people-name"
     >
       {{ name }}
     </h1>
@@ -23,16 +25,20 @@
       (click)="getNewPerson()"
       (mouseenter)="pauseAutoReload()"
       (mouseleave)="resumeAutoReload()"
+      data-cy="people-btn-getNewPerson"
     ></dx-button>
   </ng-container>
 </ng-container>
 
 <ng-template #loaderTemplate>
-  <dx-load-indicator
-    height="120"
-    width="120"
-    [visible]="!hasError"
-  ></dx-load-indicator>
+  <ng-container *ngIf="!hasError; else errorTemplate">
+    <dx-load-indicator
+      height="120"
+      width="120"
+      [visible]="!hasError"
+      data-cy="people-spinner"
+    ></dx-load-indicator>
+  </ng-container>
 </ng-template>
 
 <ng-template #errorTemplate>
@@ -41,5 +47,6 @@
     type="danger"
     stylingMode="contained"
     (click)="getNewPerson()"
+    data-cy="people-btn-retry"
   ></dx-button>
 </ng-template>
