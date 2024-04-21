@@ -1,4 +1,4 @@
-<ng-container *ngIf="person$ | async; else loaderTemplate">
+<ng-container *ngIf="person; else loaderTemplate">
   <ng-container *ngIf="!hasError; else errorTemplate">
     <img
       [src]="src"
@@ -6,14 +6,23 @@
       [width]="width"
       [height]="height"
       class="photo"
+      (mouseenter)="pauseAutoReload()"
+      (mouseleave)="resumeAutoReload()"
     />
     <p class="text-muted">Hi, My name is</p>
-    <h1>{{ name }}</h1>
+    <h1
+      (mouseenter)="pauseAutoReload()"
+      (mouseleave)="resumeAutoReload()"
+    >
+      {{ name }}
+    </h1>
     <dx-button
       text="New"
       type="default"
       stylingMode="contained"
       (click)="getNewPerson()"
+      (mouseenter)="pauseAutoReload()"
+      (mouseleave)="resumeAutoReload()"
     ></dx-button>
   </ng-container>
 </ng-container>
@@ -31,5 +40,6 @@
     text="Retry"
     type="danger"
     stylingMode="contained"
+    (click)="getNewPerson()"
   ></dx-button>
 </ng-template>

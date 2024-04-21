@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@use "devextreme/scss/widgets/material/colors" with (
+  $color: "blue",
+  $mode: "light"
+);
+@import "~normalize.css";
+@import "./themes/generated/variables.base.scss";
+
+html,
+body {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "RobotoFallback", "Noto Kufi Arabic", Helvetica, Arial,
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: $base-text-color;
+}
+
+.text-muted {
+  color: $base-text-color-muted;
+}
+
+a {
+  color: $base-accent;
+  text-decoration: none;
+  font-weight: 500;
+}

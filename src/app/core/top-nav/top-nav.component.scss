@@ -1,0 +1,20 @@
+.nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  padding-top: 8px;
+  .nav-item {
+    padding: 0;
+    height: 100%;
+  }
+
+  .nav-button {
+    border-radius: 0;
+
+    &.active {
+      font-weight: bolder;
+    }
+  }
+}

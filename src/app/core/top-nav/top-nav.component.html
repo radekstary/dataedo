@@ -1,0 +1,28 @@
+<dx-scroll-view direction="horizontal" width="100%" height="100%">
+  <div class="nav-container">
+    <dx-menu
+      [dataSource]="pages"
+      displayExpr="name"
+      valueExpr="path"
+      (onItemClick)="handleMenuItemClick($event)"
+      itemTemplate="menuItemTemplate"
+      height="100%"
+      cssClass="nav"
+    >
+      <div *dxTemplate="let item of 'menuItemTemplate'" class="nav-item">
+        <dx-button
+          class="nav-button"
+          [ngClass]="{ active: item.path === this.currentRoute }"
+          type="default"
+          stylingMode="text"
+          >{{ item.name }}</dx-button
+        >
+        <!-- <a
+          class="nav-button"
+          [ngClass]="{ active: item.path === this.currentRoute }"
+          >{{ item.name }}</a
+        > -->
+      </div>
+    </dx-menu>
+  </div>
+</dx-scroll-view>
